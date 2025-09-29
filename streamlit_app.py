@@ -16,10 +16,10 @@ from langchain.chains import create_retrieval_chain
 @st.cache_resource
 def setup_rag():
     # 1. Initialize the free embedding model
-embeddings = HuggingFaceInferenceAPIEmbeddings(
+    embeddings = HuggingFaceInferenceAPIEmbeddings(
     model_name="sentence-transformers/all-MiniLM-L6-v2",
     api_url="https://api-inference.huggingface.co/models/sentence-transformers/all-MiniLM-L6-v2"
-)
+    )
     
     # 2. Load the persisted OHS vector store from the folder
     # This path is relative to the streamlit_app.py file, which is correct.
@@ -96,4 +96,5 @@ if prompt := st.chat_input("Ask a question about South African OHS..."):
     with st.chat_message("assistant"):
         st.markdown(actual_answer)
     st.session_state.messages.append({"role": "assistant", "content": actual_answer})
+
 
