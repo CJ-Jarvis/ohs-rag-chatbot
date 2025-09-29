@@ -5,7 +5,7 @@ import pandas as pd # <-- Required to work with your OHS data (though pandas isn
 # --- LangChain/RAG Imports ---
 from langchain_core.documents import Document
 from langchain_community.vectorstores import Chroma
-from langchain_community.embeddings import HuggingFaceEmbeddings
+from langchain_community.embeddings import HuggingFaceInferenceAPIEmbeddings
 from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain_core.prompts import ChatPromptTemplate
 from langchain.chains.combine_documents import create_stuff_documents_chain
@@ -16,7 +16,10 @@ from langchain.chains import create_retrieval_chain
 @st.cache_resource
 def setup_rag():
     # 1. Initialize the free embedding model
-    embeddings = HuggingFaceEmbeddings(model_name="sentence-transformers/all-MiniLM-L6-v2")
+embeddings = HuggingFaceInferenceAPIEmbeddings(
+    model_name="sentence-transformers/all-MiniLM-L6-v2",
+    api_url="https://api-inference.huggingface.co/models/sentence-transformers/all-MiniLM-L6-v2"
+)
     
     # 2. Load the persisted OHS vector store from the folder
     # This path is relative to the streamlit_app.py file, which is correct.
@@ -93,3 +96,4 @@ if prompt := st.chat_input("Ask a question about South African OHS..."):
     with st.chat_message("assistant"):
         st.markdown(actual_answer)
     st.session_state.messages.append({"role": "assistant", "content": actual_answer})
+
