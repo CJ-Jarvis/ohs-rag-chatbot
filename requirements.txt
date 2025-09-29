@@ -1,1 +1,6 @@
-streamlit, langchain, chromadb, sentence-transformers, google-genai
+streamlit>=1.30.0
+langchain==0.1.20
+langchain-community==0.0.38
+google-genai
+sentence-transformers
+pandas
