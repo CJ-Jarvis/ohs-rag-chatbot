@@ -5,3 +5,4 @@ langchain-google-genai==0.0.12
 pandas
 # We are removing 'sentence-transformers' and adding its core component below:
 huggingface-hub
+pysqlite3-binary
