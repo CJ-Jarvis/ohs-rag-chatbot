@@ -1,6 +1,7 @@
 streamlit>=1.30.0
 langchain==0.1.20
 langchain-community==0.0.38
-langchain-google-genai==0.0.12  # <-- Pinning this version often resolves installation issues
-sentence-transformers
+langchain-google-genai==0.0.12 
 pandas
+# We are removing 'sentence-transformers' and adding its core component below:
+huggingface-hub
