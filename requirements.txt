@@ -1,0 +1,1 @@
+streamlit, langchain, chromadb, sentence-transformers, google-genai
